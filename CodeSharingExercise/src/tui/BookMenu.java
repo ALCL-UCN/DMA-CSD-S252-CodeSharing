@@ -34,6 +34,7 @@ public class BookMenu {
     public void writeBookCopy(String title, BookCopy bookCopy) {
     	
     }
+    
     private void bookMenu() {
         boolean running = true;
         while (running) {
