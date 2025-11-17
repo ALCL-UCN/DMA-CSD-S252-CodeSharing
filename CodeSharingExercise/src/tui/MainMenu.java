@@ -13,7 +13,7 @@ public class MainMenu {
 		bookMenu = new BookMenu();
 	}
 	
-	private void start() {
+	public void start() {
         mainMenu();
     }
 	
@@ -27,7 +27,6 @@ public class MainMenu {
                   break;
                 case 9:
                   System.out.println("Denne er ikke implementeret endnu");
-                  //createTestData();
                   break;
                 case 0:
                   System.out.println("Tak for denne gang.");
@@ -44,7 +43,7 @@ public class MainMenu {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("****** Hovedmenu ******");
         System.out.println(" (1) Bog menu");
-        System.out.println(" (9) Generer testdata");// will generate test data, delete in final version
+        System.out.println(" (9) Generer testdata");// will generate test data
         System.out.println(" (0) Afslut programmet");
         System.out.print("\n Vælg:");
         
@@ -56,7 +55,8 @@ public class MainMenu {
         return choice;
     }
    
-    private void createTestData(){
+    private void createTestData() {
+    	//Only use classes from model layer
         //getInstance
         //create some books
         	//add to book container
