@@ -6,6 +6,7 @@ import java.util.Scanner;
  * @author Anita Lykke Clemmensen
  * @version 0.1
  */
+
 public class MainMenu {
 	private BookMenu bookMenu;
 
