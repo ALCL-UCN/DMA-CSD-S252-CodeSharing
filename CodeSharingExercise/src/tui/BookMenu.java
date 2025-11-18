@@ -1,5 +1,8 @@
-package tui;
+package src.tui;
 import model.*;
+import src.model.Book;
+import src.model.BookCopy;
+
 import java.util.Scanner;
 
 /**
