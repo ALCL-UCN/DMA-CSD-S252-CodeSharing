@@ -1,8 +1,7 @@
-package src.model;
+package model;
 
 import java.util.ArrayList;
 
-import java.util.ArrayList;
 
 public class Book {
 	private String title;
