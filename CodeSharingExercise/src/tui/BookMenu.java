@@ -1,4 +1,8 @@
-package tui;
+package src.tui;
+import model.*;
+import src.model.Book;
+import src.model.BookCopy;
+
 import java.util.Scanner;
 
 /**
@@ -11,14 +15,29 @@ public class BookMenu {
     
     public BookMenu() {
         //Initialize instance variables
-        
-       
+ 
     }
 
     public void start() {
         bookMenu();
     }
+    
+    public void createBook() {
+    	
+    }
 
+    public void createBookCopy() {
+    	
+    }
+    
+    public void writeBook(Book book) {
+    	
+    }
+    
+    public void writeBookCopy(String title, BookCopy bookCopy) {
+    	
+    }
+    
     private void bookMenu() {
         boolean running = true;
         while (running) {
@@ -58,5 +77,5 @@ public class BookMenu {
         }
         return keyboard.nextInt();
     }
-
+    
 }
