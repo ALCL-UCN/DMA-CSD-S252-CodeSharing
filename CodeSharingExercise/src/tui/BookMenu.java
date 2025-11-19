@@ -1,9 +1,11 @@
-package src.tui;
+package tui;
 import model.*;
-import src.model.Book;
-import src.model.BookCopy;
+import model.Book;
+import model.BookCopy;
 
 import java.util.Scanner;
+
+import controller.BookController;
 
 /**
  * Book menu
@@ -12,30 +14,74 @@ import java.util.Scanner;
  */
 public class BookMenu {
     //Instance variables
+    private BookController bookController;
     
-    public BookMenu() {
+    public BookMenu(BookController bookController) {
         //Initialize instance variables
- 
+    	this.bookController = bookController;
     }
 
     public void start() {
         bookMenu();
     }
     
-    public void createBook() {
-    	
-    }
+    private String getUserInput() {
+        System.out.print("> ");
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.nextLine();
+        return userInput;
+     }
+    
+    private String prompt(String message) {
+        System.out.println("\n" + message);
+        return getUserInput();
+     }
+    
+    private void createBook() {
+        boolean created = false;
+        while (!created) {
+           System.out.println("*** Creating Book ***");
+          	String title = prompt("\nInput title of book");
+        	String author = prompt("\nInput author of book");
+           if (bookController.createBook(title, author) != null) {
+        	   bookController.createBook(title, author);
+              created = true;
+     
+           } else {
+              System.out.println("Something went wrong creating\n" + "Do you wish to attempt again? (Y/N)");
+              if (getUserInput().toLowerCase().equals("n")) {
+                 break;
+              }
+           }
+        }
+     }
 
     public void createBookCopy() {
-    	
+    	   boolean created = false;
+           while (!created) {
+              System.out.println("*** Creating Book Copy***");
+             	String title = prompt("\nInput title of book");
+            	String copyNumber = prompt("\nInput copy number of book");
+              if (bookController.createBookCopy(title, copyNumber) != null) {
+           	   bookController.createBookCopy(title, copyNumber);
+                 created = true;    
+                
+              } else {
+                 System.out.println("Something went wrong creating\n" + "Do you wish to attempt again? (Y/N)");
+                 if (getUserInput().toLowerCase().equals("n")) {
+                    break;
+                 }
+              }
+           }
     }
     
     public void writeBook(Book book) {
-    	
+    	System.out.println("Book author: " + book.getAuthor());
+    	System.out.println("Book title: " + book.getTitle());
     }
     
     public void writeBookCopy(String title, BookCopy bookCopy) {
-    	
+    	System.out.println("Book copy number: " + bookCopy.getCopyNumber());
     }
     
     private void bookMenu() {
@@ -44,11 +90,11 @@ public class BookMenu {
             int choice = writeBookMenu();
             switch (choice) {
                 case 1:
-                  System.out.println(" Denne er ikke implementeret endnu!");
+                  createBook();
                   break;
                 case 2:
-                    System.out.println(" Denne er ikke implementeret endnu!");
-                    break;
+                  createBookCopy();
+                  break;
                 case 0:
                   running = false;
                   break;
